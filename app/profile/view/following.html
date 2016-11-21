@@ -1,0 +1,54 @@
+<header-comp></header-comp>
+				<div id="content" class="row">
+					<div class="span3" id="avatar-icon-following">
+  					<a class="vcard-avatar d-block tooltipped tooltipped-s ">
+	  					<img alt="" class="avatar-img img-circle" 
+	  					src="{{currentGitUser.avatar_url}}" 
+	  					>
+  					</a>
+  					<div id="currentUserDetails">
+  						<h3 >{{currentGitUser.login}}</h3>
+  						<p ><i class="icon-user"></i> {{currentGitUser.name}}</p>
+  						<p><i class="icon-map-marker"></i> {{currentGitUser.location}}</p>
+  						<p><i class="icon-briefcase"></i> {{currentGitUser.company}}</p>
+  					</div>
+  					</div>
+
+ 					<div class="span6 follower-content">
+ 						<h2 class="center"> {{currentGitUser.name}} is followed by</h2>
+ 						<div class=info-div *ngIf="error ">
+ 							<div calss="info">No one is following you</div>
+ 						</div>
+ 						<ul class="nav nav-pills" *ngIf="!error">
+							<li class="well" role="presentation" *ngFor="let following of followingList">
+								<div class=" row follower-list">
+	 								<div class="span3 follower-avatar">
+	 								<a class="vcard-avatar d-block tooltipped tooltipped-s ">
+		  								<img alt="" class="avatar-div img-circle" src="{{following.avatar_url}}" >
+	  								</a>
+	 								</div>
+		 							<div class="span9 following-detail">
+		 								<p><a (click)="loadProfile(following.login)"> {{following.login}}</a> {{following.name}}</p>
+		 								<p> {{following.company}} </p>
+		 								<p> {{following.location}} </p>
+		 							</div>
+	 							</div>
+							</li>
+						</ul>
+
+ 						
+					</div>
+
+ 					<div id="extra-info" class="span3">
+						<ul class="nav nav-pills">
+							<li role="presentation"><a (click)="viewFollowers()">Followers<sup *ngIf="currentGitUser.followersCount && !error" >{{currentGitUser.followersCount}}</sup></a></li>
+						</ul>
+						<ul class="nav nav-pills">
+						  	<li role="presentation" class="active"><a>Following<sup *ngIf="currentGitUser.followingCount && !error">{{currentGitUser.followingCount}}</sup></a></li>
+						</ul>
+						<ul class="nav nav-pills">
+						  	<li role="presentation"><a (click)="viewRepos()">Repo List<sup *ngIf="currentGitUser.reposCount && !error">{{currentGitUser.reposCount}}</sup></a></li>
+						</ul>
+						
+					</div>
+				</div>

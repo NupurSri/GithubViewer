@@ -1,0 +1,44 @@
+<header-comp></header-comp>
+				<div id="content" class="row well">
+					<div class="span3" id="avatar-icon">
+  					<a class="vcard-avatar d-block tooltipped tooltipped-s ">
+	  					<img alt="" class="avatar-img img-circle" 
+	  					src="{{userData.avatar_url}}" 
+	  					>
+  					</a>
+  					</div>
+
+ 					<div class="span6 profile-content">
+ 						<h2 class="center"> Profile Details</h2>
+ 						<div class=info-div *ngIf="error ">
+ 						<div calss="info">No Data Found!!!</div>
+ 						</div>
+ 						<div class="info-div" *ngIf="!error">
+ 						<div class="info" *ngIf="userData.name !== null">
+ 							Name: <span>{{userData.name}}</span>
+ 						</div>
+ 						<div class="info" *ngIf="userData.company !== null">
+ 							Company: <span>{{userData.company}}</span>
+ 						</div>
+ 						<div class="info" *ngIf="userData.location !== null">
+ 							Location: <span>{{userData.location}}</span>
+ 						</div>
+ 						<div class="info" *ngIf="userData.email !== null">
+ 							Email Id: <span>{{userData.email}}</span>
+ 						</div>
+ 						</div>
+ 					</div>
+
+ 					<div id="extra-info" class="span3">
+						<ul class="nav nav-pills">
+							<li role="presentation"><a (click)="viewFollowers()">Followers <sup *ngIf="userData.followers">{{userData.followers}}</sup></a></li>
+						</ul>
+						<ul class="nav nav-pills">
+						  	<li role="presentation"><a (click)="viewFollowings()">Following <sup *ngIf="userData.following">{{userData.following}}</sup></a></li>
+						</ul>
+						<ul class="nav nav-pills">
+						  	<li role="presentation"><a (click)="viewRepos()">Repo List <sup *ngIf="userData.public_repos">{{userData.public_repos}}</sup></a></li>
+						</ul>
+						
+					</div>
+				</div>
